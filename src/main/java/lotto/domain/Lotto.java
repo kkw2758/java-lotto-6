@@ -40,4 +40,8 @@ public class Lotto {
     private boolean checkLottoLength(List<Integer> numbers) {
         return numbers.size() != LOTTO_SIZE;
     }
+
+    public boolean has(LottoNumber bonusNumber) {
+        return numbers.contains(bonusNumber);
+    }
 }
