@@ -1,6 +1,5 @@
 package lotto.domain;
 
-import lotto.domain.Lotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -35,6 +34,21 @@ class LottoTest {
         // when
         boolean actual = lotto.has(lottoNumber);
         boolean expected = true;
+
+        // then
+        assertThat(actual).isEqualTo(expected);
+    }
+
+    @DisplayName("입력 받은 로또에 대해 일치 하는 로또 번호의 숫자를 구한다.")
+    @Test
+    void calculateMatchCountTest() {
+        // given
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        Lotto answerLotto = new Lotto(List.of(1, 2, 3, 4, 7, 8));
+
+        // when
+        int actual = lotto.calculateMatchCount(answerLotto);
+        int expected = 4;
 
         // then
         assertThat(actual).isEqualTo(expected);

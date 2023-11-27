@@ -14,6 +14,16 @@ public class Lotto {
                 .toList();
     }
 
+    public boolean has(LottoNumber bonusNumber) {
+        return numbers.contains(bonusNumber);
+    }
+
+    public int calculateMatchCount(Lotto lotto) {
+        return (int) numbers.stream()
+                .filter((lotto::has))
+                .count();
+    }
+
     private void validate(List<Integer> numbers) {
         validateLength(numbers);
         validateDuplicate(numbers);
@@ -39,9 +49,5 @@ public class Lotto {
 
     private boolean checkLottoLength(List<Integer> numbers) {
         return numbers.size() != LOTTO_SIZE;
-    }
-
-    public boolean has(LottoNumber bonusNumber) {
-        return numbers.contains(bonusNumber);
     }
 }
