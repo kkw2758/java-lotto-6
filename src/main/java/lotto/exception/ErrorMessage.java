@@ -2,7 +2,7 @@ package lotto.exception;
 
 
 public enum ErrorMessage {
-    ERROR_MESSAGE("MESSAGE_INFO");
+    INVALID_LOTTO_NUMBER("로도 번호의 숫자의 범위는 1 ~ 45 까지입니다.");
 
     private final String message;
     private final String PREFIX = "[ERROR] ";
