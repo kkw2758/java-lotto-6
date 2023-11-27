@@ -12,7 +12,7 @@ public class LottoNumber {
         value = number;
     }
 
-    public static LottoNumber of(int number) {
+    public static LottoNumber from(int number) {
         validateLottoNumber(number);
         return new LottoNumber(number);
     }
