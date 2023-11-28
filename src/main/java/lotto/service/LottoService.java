@@ -30,4 +30,15 @@ public class LottoService {
         }
         return rankResult;
     }
+
+    public double calculateEarningRate(Map<Rank, Integer> rankResult, Money money) {
+        return (double) calculateTotalProfit(rankResult) / money.getValue() * 100;
+    }
+
+    private int calculateTotalProfit(Map<Rank, Integer> rankResult) {
+        return rankResult.entrySet().stream()
+                .map((entrySet) -> entrySet.getKey().getPrizeMoney() * entrySet.getValue())
+                .mapToInt(Integer::intValue)
+                .sum();
+    }
 }
