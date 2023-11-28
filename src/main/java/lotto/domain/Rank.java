@@ -19,6 +19,10 @@ public enum Rank {
         this.condition = condition;
     }
 
+    public int getPrizeMoney() {
+        return prizeMoney;
+    }
+
     public static Rank findRank(int matchCount, boolean hasBonusNumber) {
         return Arrays.stream(Rank.values())
                 .filter(rank -> rank.condition.test(matchCount, hasBonusNumber))

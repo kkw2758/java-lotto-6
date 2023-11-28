@@ -8,6 +8,10 @@ public class Money {
 
     private final int value;
 
+    public int getValue() {
+        return value;
+    }
+
     private Money(int money) {
         value = money;
     }
@@ -17,8 +21,8 @@ public class Money {
         return new Money(money);
     }
 
-    public int getValue() {
-        return value;
+    public int calculateLottoBuyCount() {
+        return value / LOTTO_PRICE;
     }
 
     private static void validate(int money) {

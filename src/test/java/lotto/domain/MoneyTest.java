@@ -1,10 +1,12 @@
 package lotto.domain;
 
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
 import lotto.exception.ErrorMessage;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 class MoneyTest {
@@ -18,5 +20,17 @@ class MoneyTest {
         assertThatThrownBy(() -> Money.from(money))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(ErrorMessage.INVALID_MONEY.getMessage());
+    }
+
+    @DisplayName("로또 구입 금액으로 살 수 있는 로또의 개수를 확인한다.")
+    @ParameterizedTest
+    // given
+    @CsvSource(value = {"1000:1", "4000:4"}, delimiter = ':')
+    void calculateLottoBuyCountTest(int money, int expected) {
+        // when
+        int actual = Money.from(money).calculateLottoBuyCount();
+
+        // then
+        assertThat(actual).isEqualTo(expected);
     }
 }
