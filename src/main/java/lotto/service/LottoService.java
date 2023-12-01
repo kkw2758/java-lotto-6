@@ -30,6 +30,10 @@ public class LottoService {
         return rankInfo;
     }
 
+    public int calculateEarningRate(EnumMap<Rank, Integer> rankInfo, Money money) {
+        return calculateTotalProfit(rankInfo) / money.getValue() * 100;
+    }
+
     private int calculateTotalProfit(EnumMap<Rank, Integer> rankInfo) {
         return rankInfo.entrySet().stream()
                 .map((entry) -> entry.getKey().getPrice() * entry.getValue())
