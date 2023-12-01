@@ -26,7 +26,7 @@ class LottoTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
-    @DisplayName("로또 번호에 특정한 숫자가 있으면 true, 없으면 false를 반환한다.")
+    @DisplayName("로또 번호에 특정한 숫자가 있으면 true, 없으면 false 를 반환한다.")
     @ParameterizedTest
     @CsvSource(value = {"1, true", "6, true", "10, false", "12, false"}, delimiter = ',')
     void lottoHasLottoNumberTest(int number, boolean expected) {
@@ -35,6 +35,21 @@ class LottoTest {
         LottoNumber lottoNumber = LottoNumber.from(number);
         // when
         boolean actual = lotto.has(lottoNumber);
+
+        // then
+        assertThat(actual).isEqualTo(expected);
+    }
+
+    @DisplayName("두 개의 로또에 대해 일치하는 번호의 수를 구한다.")
+    @Test
+    void calculateLottoMatchCountTest() {
+        // given
+        Lotto lotto = new Lotto(List.of(1, 2, 3, 4, 5, 6));
+        Lotto answerLotto = new Lotto(List.of(1, 2, 3, 4, 5, 7));
+
+        // when
+        int actual = lotto.calculateMatchNumberCount(answerLotto);
+        int expected = 5;
 
         // then
         assertThat(actual).isEqualTo(expected);

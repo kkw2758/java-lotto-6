@@ -18,6 +18,12 @@ public class Lotto {
         return numbers.contains(lottoNumber);
     }
 
+    public int calculateMatchNumberCount(Lotto lotto) {
+        return (int) numbers.stream()
+                .filter(lotto::has)
+                .count();
+    }
+
     private void validate(List<Integer> numbers) {
         validateLottoSize(numbers);
         validateLottoMember(numbers);
