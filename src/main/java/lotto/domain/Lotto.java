@@ -1,6 +1,7 @@
 package lotto.domain;
 
 import java.util.List;
+import java.util.stream.Collectors;
 import lotto.exception.ErrorMessage;
 
 public class Lotto {
@@ -10,8 +11,15 @@ public class Lotto {
     public Lotto(List<Integer> numbers) {
         validate(numbers);
         this.numbers = numbers.stream()
+                .sorted()
                 .map(LottoNumber::from)
                 .toList();
+    }
+
+    public String getLottoString() {
+        return numbers.stream()
+                .map(LottoNumber::getValue)
+                .toList().toString();
     }
 
     public boolean has(LottoNumber lottoNumber) {

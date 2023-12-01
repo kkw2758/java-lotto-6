@@ -54,4 +54,18 @@ class LottoTest {
         // then
         assertThat(actual).isEqualTo(expected);
     }
+
+    @DisplayName("생성한 로또의 번호를 오름차순으로 정렬한 뒤 문자열로 반환한다.")
+    @Test
+    void getLottoStringTest() {
+        // given
+        Lotto lotto = new Lotto(List.of(6, 5, 4, 3, 2, 1));
+
+        // when
+        String actual = lotto.getLottoString();
+        String expected = "[1, 2, 3, 4, 5, 6]";
+
+        // then
+        assertThat(actual).isEqualTo(expected);
+    }
 }
