@@ -1,7 +1,8 @@
 package lotto.exception;
 
 public enum ErrorMessage {
-    ERROR_MESSAGE("MESSAGE_INFO");
+    NOT_NUMBER("숫자를 입력해 주세요."),
+    INVALID_MONEY("구입 금액은 1,000원으로 나누어 져야합니다.");
 
     private final String message;
     private final String PREFIX = "[ERROR] ";
