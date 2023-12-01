@@ -5,15 +5,19 @@ import lotto.exception.ErrorMessage;
 
 public class BonusNumber {
 
-    private final LottoNumber bonusNumber;
+    private final LottoNumber value;
 
     private BonusNumber(LottoNumber bonusNumber) {
-        this.bonusNumber = bonusNumber;
+        this.value = bonusNumber;
     }
 
     public static BonusNumber of(LottoNumber bonusNumber, Lotto answerLotto) {
         validate(bonusNumber, answerLotto);
         return new BonusNumber(bonusNumber);
+    }
+
+    public LottoNumber getValue() {
+        return value;
     }
 
     private static void validate(LottoNumber bonusNumber, Lotto answerLotto) {
