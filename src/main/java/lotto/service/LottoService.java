@@ -30,4 +30,10 @@ public class LottoService {
         return rankInfo;
     }
 
+    private int calculateTotalProfit(EnumMap<Rank, Integer> rankInfo) {
+        return rankInfo.entrySet().stream()
+                .map((entry) -> entry.getKey().getPrice() * entry.getValue())
+                .mapToInt(Integer::intValue)
+                .sum();
+    }
 }
