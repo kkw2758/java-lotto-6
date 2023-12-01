@@ -2,7 +2,6 @@ package lotto.service;
 
 import java.util.ArrayList;
 import java.util.EnumMap;
-import java.util.HashMap;
 import java.util.List;
 import java.util.stream.IntStream;
 import lotto.domain.BonusNumber;
@@ -17,7 +16,7 @@ public class LottoService {
         int buyCount = money.calculateLottoBuyCount();
         List<Lotto> lottoBundle = new ArrayList<>();
         IntStream.range(0, buyCount)
-                .forEach(i -> lottoBundle.add(new Lotto(Random.pickUniqueNumbersInRange(1, 6, 45))));
+                .forEach(i -> lottoBundle.add(new Lotto(Random.pickUniqueNumbersInRange(1, 45, 6))));
         return lottoBundle;
     }
 
@@ -30,8 +29,8 @@ public class LottoService {
         return rankInfo;
     }
 
-    public int calculateEarningRate(EnumMap<Rank, Integer> rankInfo, Money money) {
-        return calculateTotalProfit(rankInfo) / money.getValue() * 100;
+    public double calculateEarningRate(EnumMap<Rank, Integer> rankInfo, Money money) {
+        return (double) calculateTotalProfit(rankInfo) / money.getValue() * 100;
     }
 
     private int calculateTotalProfit(EnumMap<Rank, Integer> rankInfo) {
