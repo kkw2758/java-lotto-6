@@ -16,6 +16,10 @@ public class Money {
         return new Money(money);
     }
 
+    public int calculateLottoBuyCount() {
+        return value / LOTTO_PRICE;
+    }
+
     public int getValue() {
         return value;
     }
