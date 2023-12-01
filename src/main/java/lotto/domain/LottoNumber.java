@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import java.util.Objects;
 import lotto.exception.ErrorMessage;
 
 public class LottoNumber {
@@ -28,5 +29,22 @@ public class LottoNumber {
 
     private static boolean checkNumberNotInRange(int number) {
         return number < MIN_LOTTO_NUMBER || number > MAX_LOTTO_NUMBER;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        LottoNumber that = (LottoNumber) o;
+        return value == that.value;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(value);
     }
 }

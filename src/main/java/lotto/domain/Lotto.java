@@ -5,11 +5,17 @@ import lotto.exception.ErrorMessage;
 
 public class Lotto {
     private static final int LOTTO_SIZE = 6;
-    private final List<Integer> numbers;
+    private final List<LottoNumber> numbers;
 
     public Lotto(List<Integer> numbers) {
         validate(numbers);
-        this.numbers = numbers;
+        this.numbers = numbers.stream()
+                .map(LottoNumber::from)
+                .toList();
+    }
+
+    public boolean has(LottoNumber lottoNumber) {
+        return numbers.contains(lottoNumber);
     }
 
     private void validate(List<Integer> numbers) {
